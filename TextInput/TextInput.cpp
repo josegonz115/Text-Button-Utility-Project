@@ -10,7 +10,7 @@ TextInput::TextInput(){
 }
 
 //Big 2-------------------------------------------------------------------------------------------------------
-TextInput::TextInput(const sf::RenderWindow &window) {
+TextInput::TextInput(const sf::RenderWindow &window):suggestion("./AutoCorrect/jNames.txt") {
     // Set up labels
     labelFirstName.setFont(Font::getFont());
     labelFirstName.setString("First Name: ");
@@ -29,6 +29,7 @@ TextInput::TextInput(const sf::RenderWindow &window) {
 
     // Set positions for labels and textboxes
     setPosition({10,10});
+
 }
 
 TextInput::TextInput(const TextInput& copy): GUIComponent(),labelFirstName(copy.labelFirstName),labelLastName(copy.labelLastName),
@@ -81,6 +82,8 @@ void TextInput::setPosition(const sf::Vector2f &position) {
     cursorFirstName.setPosition(multiTextFirstName.getCursorPosition());
     cursorLastName.setPosition(multiTextLastName.getCursorPosition());
 
+    // put suggestion after wordbox 1
+    suggestion.setPosition({multiTextFirstName.getPosition().x, multiTextFirstName.getPosition().y});
 }
 
 
@@ -94,6 +97,8 @@ void TextInput::draw(sf::RenderTarget& window, sf::RenderStates states) const {
     window.draw(cursorLastName);
     window.draw(multiTextFirstName);
     window.draw(multiTextLastName);
+
+    window.draw(suggestion);
 }
 void TextInput::update()
 {
@@ -167,6 +172,12 @@ void TextInput::addEventHandler(sf::RenderWindow& window, sf::Event event)
         // Handle the events for the first name TextBox
         multiTextFirstName.addEventHandler(window,event);
         cursorFirstName.setPosition(multiTextFirstName.getCursorPosition()); //might move to update
+        //Test out the auto correct
+        if(event.type == sf::Event::TextEntered){
+            std::cout << "button pressed\n";
+            suggestion.prioritize(multiTextFirstName.getString());
+
+        }
     }
     else if(cursorLastName.isHighlighted())
     {

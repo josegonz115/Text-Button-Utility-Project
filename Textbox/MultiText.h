@@ -56,6 +56,7 @@ public:
     std::string getString();
     unsigned int getSize();
     sf::Vector2f getCursorPosition() const;
+    sf::Vector2f getPosition() const;
 
     //overrided
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;

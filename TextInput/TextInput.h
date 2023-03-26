@@ -12,6 +12,7 @@
 #include "../Textbox/Font.h"
 #include "../MouseEvents/MouseEvents.h"
 #include "../History/History.h"
+#include "../AutoCorrect/Suggestion.h"
 
 class TextInput : public GUIComponent {
 private:
@@ -25,6 +26,8 @@ private:
     MultiText multiTextLastName;
 
     Snapshot _snapshot;
+
+    Suggestion suggestion;
 
     //overriden
     void draw(sf::RenderTarget& window, sf::RenderStates states) const override;

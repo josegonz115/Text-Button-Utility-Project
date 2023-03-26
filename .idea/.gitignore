@@ -12,3 +12,15 @@
 ../cmake-build-debug/
 ../cmake_modules/
 ../CMakeLists.txt
+
+# All of the .idea folder
+.idea/
+
+# All of the cmake-build-debug folder
+cmake-build-debug/
+
+# All of the cmake_modules folder
+cmake_modules/
+
+# the CMakeLists.txt file
+CMakeLists.txt

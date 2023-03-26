@@ -184,3 +184,7 @@ sf::Color MultiText::getLetterColor(char letter) {
     // Default color (Black)
     return sf::Color::Black;
 }
+
+sf::Vector2f MultiText::getPosition() const{
+    return _position;
+}
