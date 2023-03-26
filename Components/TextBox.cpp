@@ -6,7 +6,7 @@
 #include "TextBox.h"
 
 TextBox::TextBox() {
-    boxShape.setSize(sf::Vector2f(400, 30));
+    boxShape.setSize(sf::Vector2f(350, 30));
     boxShape.setOutlineColor(sf::Color::White);
     boxShape.setOutlineThickness(1);
     boxShape.setFillColor(sf::Color(240, 240, 240));

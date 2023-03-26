@@ -15,7 +15,10 @@ Suggestion::Suggestion(const std::string& fileName)
 
 void Suggestion::prioritize(const std::string& word)
 {
-    std::string temp = tolower(word);
+    // clear heapTree
+    heapTree.clear();
+
+    std::string temp = lowerWord(word);
     hearistic(temp);
     float y = initialPos.y;
     for(int i = 0; i < words.size(); ++i){
@@ -25,33 +28,72 @@ void Suggestion::prioritize(const std::string& word)
             y += words[i].getGlobalBounds().height; // why does it not work with y += 20
         }
     }
-
-
-//
-//    // Use heap to prioritize words
-//    heapTree.pop();
-//    //set position of Word
-//    words.push_back(heapTree.top());
 }
+
+std::map<char, int> Suggestion::getCharCount(const std::string& text){
+    std::map<char, int> charCount;
+    for (char c : text) {
+        if(charCount.find(c) == charCount.end()){
+            charCount[c] = 1;
+        }
+        else{
+            charCount[c]++;
+        }
+    }
+    return charCount;
+}
+
+std::map<char, int> Suggestion::getCharCount(const sf::String& text){
+    std::string temp = text;
+    return getCharCount(temp);
+}
+
 
 void Suggestion::hearistic(const std::string& word)
 {
     // checking how many letters are contained in words (in file) 2 points if a is in right place, 1 is just is if letter is just there
     for(int i = 0; i < words.size(); ++i ){
+        std::map<char, int> fileWordLetCount = getCharCount(words[i].getString());
         int points = 0;
+
         for(int j = 0; j < word.size(); j++){
-            if(word[j] == words[i].getString()[j]){
-                points += 2;
+            // if the word is smaller than the word in the file, then skip
+            if(j >= words[i].getString().getSize()){
+                continue;
             }
-            else if(words[i].getString().find(word[j]) != std::string::npos){
-                points += 1;
+
+            std::string temp = words[i].getString().substring(j, words[i].getString().getSize() - j);
+            std::map<char,int> userLetCount = getCharCount(temp);
+            char wordsChar = tolower(words[i].getString()[j]);
+            if(word[j] == wordsChar){
+                points += 2;
+                if(fileWordLetCount.find(word[j]) != fileWordLetCount.end()){
+                    fileWordLetCount[word[j]] -= 1;
+                    if(fileWordLetCount[word[j]] == 0){
+                        fileWordLetCount.erase(word[j]);
+                    }
+                }
+            }
+            else if(temp.find(word[j]) != std::string::npos){
+                // check if the letter fileWordLetCount has the letter
+                if(fileWordLetCount.find(word[j]) != fileWordLetCount.end()){
+                    fileWordLetCount[word[j]] -= 1;
+                    if(fileWordLetCount[word[j]] == 0){
+                        fileWordLetCount.erase(word[j]);
+                    }
+                    points += 1;
+                }
+                //points += 1;
             }
         }
         words[i].setPriority(points);
     }
 }
 
-std::string Suggestion::tolower(const std::string& word){
+
+
+
+std::string Suggestion::lowerWord(const std::string& word){
     std::string temp = word;
     for(int i = 0; i < word.size(); ++i){
         if(temp[i] >= 'A' && temp[i] <= 'Z'){
@@ -76,4 +118,8 @@ void Suggestion::draw(sf::RenderTarget& target, sf::RenderStates states) const
         target.draw(temp.top(), states);
         temp.pop();
     }
+}
+
+void Suggestion::clear(){
+    heapTree.clear();
 }

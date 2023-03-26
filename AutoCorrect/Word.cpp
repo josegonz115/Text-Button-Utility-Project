@@ -10,6 +10,7 @@ Word::Word()
     priority = 0;
     setCharacterSize(20);
     setFillColor(sf::Color::Red);
+    setFont(Font::getFont());
 }
 
 //overloading all comparision operators

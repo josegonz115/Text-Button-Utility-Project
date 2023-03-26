@@ -31,6 +31,8 @@ public:
     // Override  the += operator
     void operator+=(const T& item);
 
+    void clear();
+
 
     // Accessors / Getters
     T& top();

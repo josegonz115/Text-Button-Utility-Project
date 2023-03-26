@@ -89,6 +89,13 @@ void HeapTree<T>::operator+=(const T& item){
     push(item);
 }
 
+template<typename T>
+void HeapTree<T>::clear(){
+    while(!empty()){
+        pop();
+    }
+}
+
 
 // Accessors / Getters---------------------------------------------------------
 template<typename T>

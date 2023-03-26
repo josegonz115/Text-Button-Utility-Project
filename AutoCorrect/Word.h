@@ -5,6 +5,7 @@
 #ifndef TEXTBOXPROJECT_WORD_H
 #define TEXTBOXPROJECT_WORD_H
 #include <SFML/Graphics.hpp>
+#include "../Textbox/Font.h"
 
 class Word : public sf::Text
 {

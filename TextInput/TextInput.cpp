@@ -83,7 +83,8 @@ void TextInput::setPosition(const sf::Vector2f &position) {
     cursorLastName.setPosition(multiTextLastName.getCursorPosition());
 
     // put suggestion after wordbox 1
-    suggestion.setPosition({multiTextFirstName.getPosition().x, multiTextFirstName.getPosition().y});
+    suggestion.setPosition({textBoxFirstName.getPosition().x + textBoxFirstName.getGlobalBounds().width,
+                            textBoxFirstName.getPosition().y + textBoxFirstName.getGlobalBounds().height});
 }
 
 
@@ -110,6 +111,7 @@ void TextInput::update()
     multiTextFirstName.update();
     multiTextLastName.update();
 
+    //suggestion.update();
 }
 
 Snapshot &TextInput::getSnapshot()
@@ -175,8 +177,8 @@ void TextInput::addEventHandler(sf::RenderWindow& window, sf::Event event)
         //Test out the auto correct
         if(event.type == sf::Event::TextEntered){
             std::cout << "button pressed\n";
+//            suggestion.clear();
             suggestion.prioritize(multiTextFirstName.getString());
-
         }
     }
     else if(cursorLastName.isHighlighted())

@@ -44,7 +44,6 @@ public:
     void setPosition(const sf::Vector2f &position);
 
 
-    void update(float time);
     //Overriden
     void addEventHandler(sf::RenderWindow& window, sf::Event event) override;
     Snapshot &getSnapshot() override;

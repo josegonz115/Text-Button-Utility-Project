@@ -21,7 +21,6 @@ void Application::runLoop(){
             o->update();
         }
         window.display();
-
         // Record the current state of TextInput after handling events
 //        Snapshot* snapshot = new Snapshot(textInput.getSnapshot());
 //        History::pushHistory({snapshot,&textInput});

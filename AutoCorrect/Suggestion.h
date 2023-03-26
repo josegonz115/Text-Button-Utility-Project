@@ -8,6 +8,7 @@
 #include "Word.h"
 #include "HeapTree.h"
 #include <vector>
+#include <cctype>
 #include <SFML/Graphics.hpp>
 
 // uses FileReader to import data, then uses the data to compare with what the user type. I has a heuristic function to determine a priority for each Word
@@ -24,9 +25,13 @@ private:
 
     //heuristic // checking how many letters are contained in words (in file) 2 points if a is in right place, 1 is just is if letter is just there
     void hearistic(const std::string& word);
-    std::string tolower(const std::string& word);
+    std::string lowerWord(const std::string& word);
     // std::string tolower(Word& word);
     //int getCharCount(const std::string&, const std::string& text);
+    std::map<char, int> getCharCount(const std::string& text);
+    std::map<char, int> getCharCount(const sf::String& text);
+
+    //void wordFilter(int pos, char letter);
 public:
     //constructors
     Suggestion();
@@ -41,6 +46,10 @@ public:
 
     // draw function
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+    void clear();
+
+
 };
 
 
