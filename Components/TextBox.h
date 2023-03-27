@@ -13,15 +13,14 @@ private:
     sf::RectangleShape boxShape;
     Snapshot _snapshot;
 
-    //override
-
 public:
     TextBox();
     TextBox(const TextBox& copy);
-    //setters
+    // Mutators
     void setPosition(sf::Vector2f position);
+    void setSize(sf::Vector2f size);
 
-    //getters
+    // Accessors
     sf::Vector2f getPosition() const;
     sf::FloatRect getGlobalBounds() const;
 

@@ -9,8 +9,16 @@ Application::Application(sf::VideoMode videoMode, const std::string& title): win
 
 void Application::runLoop(){
     // add object - polymorphism
-    TextInput textInput(window);
-    addGUIComponent(textInput);
+    // ADD ANY OBJECTS HERE
+    DropdownMenu menu({40,40},{300,60}, "menu"); //parameters -> (position, size, text)
+    menu.addItem("ice cream");
+    menu.addItem("pizza");
+    menu.addItem("chicken");
+    menu.addItem("steak");
+    addGUIComponent(menu);
+
+    //TextInput textInput(window);
+    //addGUIComponent(textInput);
 
     while(window.isOpen()){
         eventListener();

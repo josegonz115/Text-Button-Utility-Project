@@ -13,6 +13,7 @@
 #include "TextInput/TextInput.h"
 #include "History/History.h"
 #include "KeyShortcuts/KeyShortcuts.h"
+#include "Dropdown/DropdownMenu.h"
 
 class Application
 {

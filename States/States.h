@@ -7,7 +7,8 @@
 #include <SFML/Graphics.hpp>
 
 enum ObjectState{
-    HIDDEN,
+    VISIBLE,
+    ACTION,
     HIGHLIGHTED,
     DISABLED,
 
