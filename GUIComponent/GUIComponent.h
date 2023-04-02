@@ -22,8 +22,8 @@ public:
     virtual void update() = 0;
 
     //from SnapshotInterface
-    virtual Snapshot& getSnapshot() = 0;
-    virtual void applySnapshot(const Snapshot& snapshot) = 0;
+    virtual Snapshot* getSnapshot() = 0;
+    virtual void applySnapshot(const Snapshot* snapshot) = 0;
 };
 
 

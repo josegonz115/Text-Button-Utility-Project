@@ -11,7 +11,6 @@
 class TextBox : public GUIComponent {
 private:
     sf::RectangleShape boxShape;
-    Snapshot _snapshot;
 
 public:
     TextBox();
@@ -28,8 +27,9 @@ public:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
     void update() override;
-    Snapshot& getSnapshot() override;
-    void applySnapshot(const Snapshot &snapshot) override;
+
+    Snapshot* getSnapshot() override;
+    void applySnapshot(const Snapshot* snapshot) override;
 };
 
 

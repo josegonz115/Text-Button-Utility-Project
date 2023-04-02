@@ -8,11 +8,13 @@
 #include <iterator>
 #include "Letter.h"
 #include "../GUIComponent/GUIComponent.h"
-#include "../History/History.h"
+#include "../Snapshot/History.h"
+#include "../Snapshot/TextInputSnapshot.h"
 
 class MultiText : public GUIComponent
 {
 private:
+    std::string _s;
     std::list<Letter> _letters;
 
     sf::Font _font;
@@ -62,8 +64,8 @@ public:
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
     void update() override;
     void draw(sf::RenderTarget& window, sf::RenderStates states) const override;
-    Snapshot& getSnapshot() override;
-    void applySnapshot(const Snapshot &snapshot) override;
+    Snapshot* getSnapshot() override;
+    void applySnapshot(const Snapshot* snapshot) override;
 };
 
 

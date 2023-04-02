@@ -11,7 +11,7 @@
 #include <string>
 #include "GUIComponent/GUIComponent.h"
 #include "TextInput/TextInput.h"
-#include "History/History.h"
+#include "Snapshot/History.h"
 #include "KeyShortcuts/KeyShortcuts.h"
 #include "Dropdown/DropdownMenu.h"
 

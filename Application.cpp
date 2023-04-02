@@ -10,15 +10,21 @@ Application::Application(sf::VideoMode videoMode, const std::string& title): win
 void Application::runLoop(){
     // add object - polymorphism
     // ADD ANY OBJECTS HERE
-    DropdownMenu menu({40,40},{300,60}, "menu"); //parameters -> (position, size, text)
-    menu.addItem("ice cream");
-    menu.addItem("pizza");
-    menu.addItem("chicken");
-    menu.addItem("steak");
-    addGUIComponent(menu);
+//    DropdownMenu menu({40,40},{200,60}, "menu"); //parameters -> (position, size, text)
+//    //DropdownMenu menu({100,100},{200,60}, "menu"); //parameters -> (position, size, text)
+//    menu.addItem("ice cream");
+//    menu.addItem("pizza");
+//    menu.addItem("chicken");
+//    menu.addItem("steak");
+//    menu.setPosition({150,100});
+//    addGUIComponent(menu);
 
-    //TextInput textInput(window);
-    //addGUIComponent(textInput);
+
+
+
+
+    TextInput textInput(window);
+    addGUIComponent(textInput);
 
     while(window.isOpen()){
         eventListener();
@@ -29,16 +35,11 @@ void Application::runLoop(){
             o->update();
         }
         window.display();
-        // Record the current state of TextInput after handling events
-//        Snapshot* snapshot = new Snapshot(textInput.getSnapshot());
-//        History::pushHistory({snapshot,&textInput});
     }
 }
 
 void Application::eventListener()
 {
-    Snapshot* snapshot;
-
     sf::Event event;
     while(window.pollEvent(event)){
         if(sf::Event::Closed == event.type){
@@ -46,9 +47,6 @@ void Application::eventListener()
         }
         for(GUIComponent* o: objects){
             o->addEventHandler(window,event);
-//            // Record the current state of TextInput after handling events
-//            snapshot = new Snapshot(o->getSnapshot());
-//            History::pushHistory({snapshot,o});
         }
         History::addEventHandler(window,event);
     }

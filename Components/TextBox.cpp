@@ -12,7 +12,7 @@ TextBox::TextBox() {
     boxShape.setFillColor(sf::Color(240, 240, 240));
 }
 
-TextBox::TextBox(const TextBox& copy): GUIComponent(copy),boxShape(copy.boxShape), _snapshot(copy._snapshot){}
+TextBox::TextBox(const TextBox& copy): GUIComponent(copy),boxShape(copy.boxShape){}
 
 // Mutators-------------------------------------------------------------------------------------------------------------
 void TextBox::setPosition(sf::Vector2f position) {
@@ -49,17 +49,14 @@ void TextBox::update()
 
 }
 
-Snapshot& TextBox::getSnapshot()
+Snapshot* TextBox::getSnapshot()
 {
-    _snapshot = new TextBox(*this);
-    return _snapshot;
+//    TextBoxSnapshot* p = new TextBox;
+//    p->setData(boxShape.getText());
 }
 
-void TextBox::applySnapshot(const Snapshot &snapshot)
+void TextBox::applySnapshot(const Snapshot* snapshot)
 {
-    GUIComponent* prev = (snapshot);
-    TextBox* prevState = static_cast<TextBox*>(prev);
-    if(prevState){
-        *this = *prevState;
-    }
+
+//    boxShape.applySnapshot(snapshot);
 }

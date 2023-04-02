@@ -10,7 +10,7 @@ TextInput::TextInput(){
 }
 
 //Big 2-------------------------------------------------------------------------------------------------------
-TextInput::TextInput(const sf::RenderWindow &window):suggestion("./AutoCorrect/jNames.txt") {
+TextInput::TextInput(const sf::RenderWindow &window):suggestion("./AutoCorrect/5000-baby-girl-names.txt") {
     // Set up labels
     labelFirstName.setFont(Font::getFont());
     labelFirstName.setString("First Name: ");
@@ -34,7 +34,8 @@ TextInput::TextInput(const sf::RenderWindow &window):suggestion("./AutoCorrect/j
 
 TextInput::TextInput(const TextInput& copy): GUIComponent(),labelFirstName(copy.labelFirstName),labelLastName(copy.labelLastName),
 textBoxFirstName(copy.textBoxFirstName),textBoxLastName(copy.textBoxLastName),cursorFirstName(copy.cursorFirstName),
-cursorLastName(copy.cursorLastName),multiTextFirstName(copy.multiTextFirstName),multiTextLastName(copy.multiTextLastName){}
+cursorLastName(copy.cursorLastName),multiTextFirstName(copy.multiTextFirstName),multiTextLastName(copy.multiTextLastName),
+suggestion(copy.suggestion){}
 
 TextInput& TextInput::operator=(const TextInput& other) {
     if (this == &other) {
@@ -51,6 +52,7 @@ TextInput& TextInput::operator=(const TextInput& other) {
     cursorLastName = other.cursorLastName;
     multiTextFirstName = other.multiTextFirstName;
     multiTextLastName = other.multiTextLastName;
+    suggestion = other.suggestion;
 
     return *this;
 }
@@ -103,7 +105,6 @@ void TextInput::draw(sf::RenderTarget& window, sf::RenderStates states) const {
 }
 void TextInput::update()
 {
-    //am i suppose to update every sf::Drawable ?
     textBoxFirstName.update();
     textBoxLastName.update();
     cursorFirstName.update();
@@ -114,80 +115,94 @@ void TextInput::update()
     //suggestion.update();
 }
 
-Snapshot &TextInput::getSnapshot()
-{
-//    // Record the current state of TextInput after handling events
-//    Snapshot* snapshot = new Snapshot(multiTextFirstName.getSnapshot());
-//    History::pushHistory({snapshot,o});
-//
-//
-    _snapshot = new TextInput(*this);
-    return _snapshot;
-}
-
-void TextInput::applySnapshot(const Snapshot &snapshot)
-{
-    GUIComponent* prev = snapshot;
-    TextInput* prevState = static_cast<TextInput*>(prev);
-    if (prevState) {
-        *this = *prevState;
-        delete prevState;
-    }
-}
 
 void TextInput::addEventHandler(sf::RenderWindow& window, sf::Event event)
 {
     // Record the current state of TextInput after handling events
-    Snapshot* snapshot;
+    //History::pushHistory({getSnapshot(), this});
 
     // Check if the mouse is hovering over the TextBoxes
-    if (MouseEvents<TextBox>::mouseClicked(textBoxFirstName, window,event))
+    if (MouseEvents<TextBox>::mouseClicked(textBoxFirstName, window, event))
     {
         std::cout << "Clicked First Name TextBox\n";
         cursorFirstName.setHighlighted(true);
         cursorLastName.setHighlighted(false);
 
-        snapshot = new Snapshot(getSnapshot());
-        History::pushHistory({snapshot,this});
-    }
-    else if(MouseEvents<TextBox>::mouseClicked(textBoxLastName, window,event))
+       // History::pushHistory({snapshot, this});
+    } else if (MouseEvents<TextBox>::mouseClicked(textBoxLastName, window, event))
     {
         std::cout << "Clicked Last Name TextBox\n";
         cursorFirstName.setHighlighted(false);
         cursorLastName.setHighlighted(true);
 
-        snapshot = new Snapshot(getSnapshot());
-        History::pushHistory({snapshot,this});
-    }
-    else if(MouseEvents<TextBox>::mouseClicked(window,event))
+
+       // History::pushHistory({snapshot, this});
+    } else if (MouseEvents<TextBox>::mouseClicked(window, event))
     {
         std::cout << "Clicked outside of TextBoxes\n";
         cursorFirstName.setHighlighted(false);
         cursorLastName.setHighlighted(false);
 
-        snapshot = new Snapshot(getSnapshot());
-        History::pushHistory({snapshot,this});
+
     }
 
-    if(cursorFirstName.isHighlighted())
+    if (cursorFirstName.isHighlighted())
     {
+
         // Handle the events for the first name TextBox
-        multiTextFirstName.addEventHandler(window,event);
+        multiTextFirstName.addEventHandler(window, event);
         cursorFirstName.setPosition(multiTextFirstName.getCursorPosition()); //might move to update
+
         //Test out the auto correct
-        if(event.type == sf::Event::TextEntered){
+        if (event.type == sf::Event::TextEntered)
+        {
             std::cout << "button pressed\n";
-//            suggestion.clear();
             suggestion.prioritize(multiTextFirstName.getString());
         }
-    }
-    else if(cursorLastName.isHighlighted())
+//        if (event.type == sf::Event::TextEntered) {
+//            History::pushHistory({getSnapshot(), this});
+//        }
+    } else if (cursorLastName.isHighlighted())
     {
         // Handle the events for the last name TextBox
-        multiTextLastName.addEventHandler(window,event);
+        multiTextLastName.addEventHandler(window, event);
         cursorLastName.setPosition(multiTextLastName.getCursorPosition());
+//        if (event.type == sf::Event::TextEntered) {
+//            History::pushHistory({getSnapshot(), this});
+//        }
     }
+}
 
+Snapshot* TextInput::getSnapshot()
+{
+//    TextInputSnapshot* p = new TextInputSnapshot;
+//    p->setLabelFirstName(labelFirstName);
+//    p->setLabelLastName(labelLastName);
+//    p->setTextBoxFirstName(textBoxFirstName);
+//    p->setTextBoxLastName(textBoxLastName);
+//    p->setCursorFirstName(cursorFirstName);
+//    p->setCursorLastName(cursorLastName);
+//    p->setMultiTextFirstName(multiTextFirstName);
+//    p->setMultiTextLastName(multiTextLastName);
+//    p->setSuggestion(suggestion);
+//
+//    return p;
+}
 
-
+void TextInput::applySnapshot(const Snapshot* snapshot)
+{
+//    std::cout << "applySnapshot\n";
+//    const TextInputSnapshot* p = dynamic_cast<const TextInputSnapshot*>(snapshot);
+//    if (p)
+//    {
+//        labelFirstName = p->getLabelFirstName();
+//        labelLastName = p->getLabelLastName();
+//        textBoxFirstName = p->getTextBoxFirstName();
+//        textBoxLastName = p->getTextBoxLastName();
+//        cursorFirstName = p->getCursorFirstName();
+//        cursorLastName = p->getCursorLastName();
+//        multiTextFirstName = p->getMultiTextFirstName();
+//        multiTextLastName = p->getMultiTextLastName();
+//        suggestion = p->getSuggestion();
+//    }
 }

@@ -11,11 +11,10 @@
 class Cursor : public GUIComponent {
 private:
     sf::RectangleShape cursorShape;
-    //float blinkTime;
     bool _visible;
     sf::Clock _clock;
     float _blinkPeriod;
-    Snapshot _snapshot;
+
 
 
     //override
@@ -37,8 +36,8 @@ public:
     //override
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
     void update() override;
-    Snapshot& getSnapshot() override;
-    void applySnapshot(const Snapshot &snapshot) override;
+    Snapshot* getSnapshot() override;
+    void applySnapshot(const Snapshot* snapshot) override;
 };
 
 

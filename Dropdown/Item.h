@@ -36,8 +36,8 @@ public:
     void draw(sf::RenderTarget &window, sf::RenderStates states) const override;
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
     void update() override;
-    Snapshot &getSnapshot() override;
-    void applySnapshot(const Snapshot &snapshot) override;
+    Snapshot* getSnapshot() override;
+    void applySnapshot(const Snapshot* snapshot) override;
 };
 
 

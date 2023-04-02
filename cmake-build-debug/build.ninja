@@ -105,13 +105,13 @@ build CMakeFiles/textboxProject.dir/States/States.cpp.obj: CXX_COMPILER__textbox
   OBJECT_DIR = CMakeFiles\textboxProject.dir
   OBJECT_FILE_DIR = CMakeFiles\textboxProject.dir\States
 
-build CMakeFiles/textboxProject.dir/History/History.cpp.obj: CXX_COMPILER__textboxProject_Debug C$:/Users/joseg/OneDrive/Documents/PCC/CS-8/cs8week9/textboxProject/History/History.cpp || cmake_object_order_depends_target_textboxProject
+build CMakeFiles/textboxProject.dir/Snapshot/History.cpp.obj: CXX_COMPILER__textboxProject_Debug C$:/Users/joseg/OneDrive/Documents/PCC/CS-8/cs8week9/textboxProject/Snapshot/History.cpp || cmake_object_order_depends_target_textboxProject
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\textboxProject.dir\History\History.cpp.obj.d
+  DEP_FILE = CMakeFiles\textboxProject.dir\Snapshot\History.cpp.obj.d
   FLAGS = -std=c++14 -static -g -fdiagnostics-color=always -std=gnu++1z
   INCLUDES = -IC:/SFML-2.5.1/include
   OBJECT_DIR = CMakeFiles\textboxProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\textboxProject.dir\History
+  OBJECT_FILE_DIR = CMakeFiles\textboxProject.dir\Snapshot
 
 build CMakeFiles/textboxProject.dir/KeyShortcuts/KeyShortcuts.cpp.obj: CXX_COMPILER__textboxProject_Debug C$:/Users/joseg/OneDrive/Documents/PCC/CS-8/cs8week9/textboxProject/KeyShortcuts/KeyShortcuts.cpp || cmake_object_order_depends_target_textboxProject
   DEFINES = -DSFML_STATIC
@@ -209,6 +209,14 @@ build CMakeFiles/textboxProject.dir/Dropdown/InputBox.cpp.obj: CXX_COMPILER__tex
   OBJECT_DIR = CMakeFiles\textboxProject.dir
   OBJECT_FILE_DIR = CMakeFiles\textboxProject.dir\Dropdown
 
+build CMakeFiles/textboxProject.dir/Snapshot/TextInputSnapshot.cpp.obj: CXX_COMPILER__textboxProject_Debug C$:/Users/joseg/OneDrive/Documents/PCC/CS-8/cs8week9/textboxProject/Snapshot/TextInputSnapshot.cpp || cmake_object_order_depends_target_textboxProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\textboxProject.dir\Snapshot\TextInputSnapshot.cpp.obj.d
+  FLAGS = -std=c++14 -static -g -fdiagnostics-color=always -std=gnu++1z
+  INCLUDES = -IC:/SFML-2.5.1/include
+  OBJECT_DIR = CMakeFiles\textboxProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\textboxProject.dir\Snapshot
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target textboxProject
@@ -217,7 +225,7 @@ build CMakeFiles/textboxProject.dir/Dropdown/InputBox.cpp.obj: CXX_COMPILER__tex
 #############################################
 # Link the executable textboxProject.exe
 
-build textboxProject.exe: CXX_EXECUTABLE_LINKER__textboxProject_Debug CMakeFiles/textboxProject.dir/main.cpp.obj CMakeFiles/textboxProject.dir/Application.cpp.obj CMakeFiles/textboxProject.dir/Textbox/Font.cpp.obj CMakeFiles/textboxProject.dir/Textbox/Letter.cpp.obj CMakeFiles/textboxProject.dir/Textbox/MultiText.cpp.obj CMakeFiles/textboxProject.dir/Textbox/Typing.cpp.obj CMakeFiles/textboxProject.dir/States/States.cpp.obj CMakeFiles/textboxProject.dir/History/History.cpp.obj CMakeFiles/textboxProject.dir/KeyShortcuts/KeyShortcuts.cpp.obj CMakeFiles/textboxProject.dir/MouseEvents/MouseEvents.cpp.obj CMakeFiles/textboxProject.dir/TextInput/TextInput.cpp.obj CMakeFiles/textboxProject.dir/Components/TextBox.cpp.obj CMakeFiles/textboxProject.dir/Components/Cursor.cpp.obj CMakeFiles/textboxProject.dir/AutoCorrect/Suggestion.cpp.obj CMakeFiles/textboxProject.dir/AutoCorrect/FileReader.cpp.obj CMakeFiles/textboxProject.dir/AutoCorrect/Word.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/Item.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/ItemList.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/DropdownMenu.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/InputBox.cpp.obj | C$:/SFML-2.5.1/lib/libsfml-audio-s-d.a C$:/SFML-2.5.1/lib/libsfml-graphics-s-d.a C$:/SFML-2.5.1/lib/libsfml-window-s-d.a C$:/SFML-2.5.1/lib/libsfml-system-s-d.a C$:/SFML-2.5.1/lib/libfreetype.a C$:/SFML-2.5.1/lib/libopenal32.a C$:/SFML-2.5.1/lib/libFLAC.a C$:/SFML-2.5.1/lib/libvorbisenc.a C$:/SFML-2.5.1/lib/libvorbisfile.a C$:/SFML-2.5.1/lib/libvorbis.a C$:/SFML-2.5.1/lib/libogg.a C$:/SFML-2.5.1/lib/libopenal32.a C$:/SFML-2.5.1/lib/libFLAC.a C$:/SFML-2.5.1/lib/libvorbisenc.a C$:/SFML-2.5.1/lib/libvorbisfile.a C$:/SFML-2.5.1/lib/libvorbis.a C$:/SFML-2.5.1/lib/libogg.a
+build textboxProject.exe: CXX_EXECUTABLE_LINKER__textboxProject_Debug CMakeFiles/textboxProject.dir/main.cpp.obj CMakeFiles/textboxProject.dir/Application.cpp.obj CMakeFiles/textboxProject.dir/Textbox/Font.cpp.obj CMakeFiles/textboxProject.dir/Textbox/Letter.cpp.obj CMakeFiles/textboxProject.dir/Textbox/MultiText.cpp.obj CMakeFiles/textboxProject.dir/Textbox/Typing.cpp.obj CMakeFiles/textboxProject.dir/States/States.cpp.obj CMakeFiles/textboxProject.dir/Snapshot/History.cpp.obj CMakeFiles/textboxProject.dir/KeyShortcuts/KeyShortcuts.cpp.obj CMakeFiles/textboxProject.dir/MouseEvents/MouseEvents.cpp.obj CMakeFiles/textboxProject.dir/TextInput/TextInput.cpp.obj CMakeFiles/textboxProject.dir/Components/TextBox.cpp.obj CMakeFiles/textboxProject.dir/Components/Cursor.cpp.obj CMakeFiles/textboxProject.dir/AutoCorrect/Suggestion.cpp.obj CMakeFiles/textboxProject.dir/AutoCorrect/FileReader.cpp.obj CMakeFiles/textboxProject.dir/AutoCorrect/Word.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/Item.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/ItemList.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/DropdownMenu.cpp.obj CMakeFiles/textboxProject.dir/Dropdown/InputBox.cpp.obj CMakeFiles/textboxProject.dir/Snapshot/TextInputSnapshot.cpp.obj | C$:/SFML-2.5.1/lib/libsfml-audio-s-d.a C$:/SFML-2.5.1/lib/libsfml-graphics-s-d.a C$:/SFML-2.5.1/lib/libsfml-window-s-d.a C$:/SFML-2.5.1/lib/libsfml-system-s-d.a C$:/SFML-2.5.1/lib/libfreetype.a C$:/SFML-2.5.1/lib/libopenal32.a C$:/SFML-2.5.1/lib/libFLAC.a C$:/SFML-2.5.1/lib/libvorbisenc.a C$:/SFML-2.5.1/lib/libvorbisfile.a C$:/SFML-2.5.1/lib/libvorbis.a C$:/SFML-2.5.1/lib/libogg.a C$:/SFML-2.5.1/lib/libopenal32.a C$:/SFML-2.5.1/lib/libFLAC.a C$:/SFML-2.5.1/lib/libvorbisenc.a C$:/SFML-2.5.1/lib/libvorbisfile.a C$:/SFML-2.5.1/lib/libvorbis.a C$:/SFML-2.5.1/lib/libogg.a
   FLAGS = -std=c++14 -static -g
   LINK_LIBRARIES = C:/SFML-2.5.1/lib/libsfml-audio-s-d.a  C:/SFML-2.5.1/lib/libsfml-graphics-s-d.a  C:/SFML-2.5.1/lib/libsfml-window-s-d.a  C:/SFML-2.5.1/lib/libsfml-system-s-d.a  C:/SFML-2.5.1/lib/libfreetype.a  -lopengl32  -lwinmm  -lgdi32  -lwinmm  C:/SFML-2.5.1/lib/libopenal32.a  C:/SFML-2.5.1/lib/libFLAC.a  C:/SFML-2.5.1/lib/libvorbisenc.a  C:/SFML-2.5.1/lib/libvorbisfile.a  C:/SFML-2.5.1/lib/libvorbis.a  C:/SFML-2.5.1/lib/libogg.a  -lgdi32  C:/SFML-2.5.1/lib/libopenal32.a  C:/SFML-2.5.1/lib/libFLAC.a  C:/SFML-2.5.1/lib/libvorbisenc.a  C:/SFML-2.5.1/lib/libvorbisfile.a  C:/SFML-2.5.1/lib/libvorbis.a  C:/SFML-2.5.1/lib/libogg.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\textboxProject.dir

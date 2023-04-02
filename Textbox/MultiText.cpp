@@ -41,9 +41,8 @@ void MultiText::setCharacterSize(unsigned int charSize){
 
 void MultiText::setString(const std::string& letters) {
     _letters.clear();
-    for (unsigned int i = 0; i < letters.size(); ++i) {
-        Letter letterObj(letters[i], _font, _position, getLetterColor(letters[i]), _charSize);
-        _letters.push_back(letterObj);
+    for(char let : letters){
+        append(let);
     }
 }
 
@@ -102,6 +101,7 @@ void MultiText::draw(sf::RenderTarget &window, sf::RenderStates states) const
 void MultiText::addEventHandler(sf::RenderWindow &window, sf::Event event)
 {
     if(event.type == sf::Event::TextEntered){
+        History::pushHistory({getSnapshot(), this});
         std::cout << "Text entered: " << event.text.unicode << std::endl;
         unsigned int textSize = getSize();
         unsigned int unicode = event.text.unicode;
@@ -117,8 +117,7 @@ void MultiText::addEventHandler(sf::RenderWindow &window, sf::Event event)
         }
 
         // Create snapshot
-        Snapshot* snapshot = new Snapshot(getSnapshot());
-        History::pushHistory({snapshot,this});
+        //History::pushHistory({snapshot,this});
     }
 }
 
@@ -146,23 +145,21 @@ void MultiText::update()
 
 
 
-Snapshot& MultiText::getSnapshot()
+Snapshot* MultiText::getSnapshot()
 {
-    MultiText* copy = new MultiText(*this);
-    _snapshot = copy;
-    return _snapshot;
-
+    TextInputSnapshot* p = new TextInputSnapshot;
+    p->setData(getString());
+    return p;
 }
 
-void MultiText::applySnapshot(const Snapshot &snapshot)
+void MultiText::applySnapshot(const Snapshot* snapshot)
 {
-    GUIComponent* prev = (snapshot);
-    MultiText* prevState = static_cast<MultiText*>(prev);
-    if(prevState){
-        *this = *prevState;
-        delete prevState;
+    std::cout << "applySnapshot\n";
+    const TextInputSnapshot* p = dynamic_cast<const TextInputSnapshot*>(snapshot);
+    if (p)
+    {
+        setString(p->getData());
     }
-
 }
 
 

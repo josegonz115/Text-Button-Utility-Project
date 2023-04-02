@@ -12,7 +12,7 @@ Cursor::Cursor() :GUIComponent(), _visible(true), _blinkPeriod(0.5f) {
 }
 
 Cursor::Cursor(const Cursor &other):GUIComponent(other),cursorShape(other.cursorShape),_visible(other._visible),
-_blinkPeriod(other._blinkPeriod), _snapshot(other._snapshot){}
+_blinkPeriod(other._blinkPeriod){}
 
 
 
@@ -63,21 +63,16 @@ bool Cursor::isHighlighted() const
     return checkState(HIGHLIGHTED);
 }
 
-Snapshot& Cursor::getSnapshot()
+Snapshot* Cursor::getSnapshot()
 {
-    Cursor* copy = new Cursor(*this);
-    _snapshot = copy;
-    return _snapshot;
+//    TextBoxSnapshot* p = new TextBox;
+//    p->setData(boxShape.getText());
 }
 
-void Cursor::applySnapshot(const Snapshot &snapshot)
+void Cursor::applySnapshot(const Snapshot* snapshot)
 {
-    GUIComponent* prev = (snapshot);
-    Cursor* prevState = static_cast<Cursor*>(prev);
-    if(prevState){
-        *this = *prevState;
-    }
+//    cursorShape.applySnapshot(snapshot);
+//    _visible = snapshot.getBool();
+//    _clock = snapshot.getClock();
+//    _blinkPeriod = snapshot.getFloat();
 }
-
-
-

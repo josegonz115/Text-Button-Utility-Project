@@ -11,8 +11,9 @@
 #include "../Components/Cursor.h"
 #include "../Textbox/Font.h"
 #include "../MouseEvents/MouseEvents.h"
-#include "../History/History.h"
+#include "../Snapshot/History.h"
 #include "../AutoCorrect/Suggestion.h"
+#include "../Snapshot/TextInputSnapshot.h"
 
 class TextInput : public GUIComponent {
 private:
@@ -24,8 +25,6 @@ private:
     Cursor cursorLastName;
     MultiText multiTextFirstName;
     MultiText multiTextLastName;
-
-    Snapshot _snapshot;
 
     Suggestion suggestion;
 
@@ -46,8 +45,8 @@ public:
 
     //Overriden
     void addEventHandler(sf::RenderWindow& window, sf::Event event) override;
-    Snapshot &getSnapshot() override;
-    void applySnapshot(const Snapshot &snapshot) override;
+    Snapshot* getSnapshot() override;
+    void applySnapshot(const Snapshot* snapshot) override;
 };
 
 

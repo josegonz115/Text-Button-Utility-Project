@@ -88,12 +88,12 @@ void Item::addEventHandler(sf::RenderWindow &window, sf::Event event)
 
 void Item::update(){}
 
-Snapshot &Item::getSnapshot()
+Snapshot* Item::getSnapshot()
 {
-    return this->getSnapshot();
+
 }
 
-void Item::applySnapshot(const Snapshot &snapshot)
+void Item::applySnapshot(const Snapshot* snapshot)
 {
 
 }

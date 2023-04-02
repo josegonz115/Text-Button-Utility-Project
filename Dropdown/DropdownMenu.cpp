@@ -59,9 +59,11 @@ void DropdownMenu::addEventHandler(sf::RenderWindow &window, sf::Event event)
 
 void DropdownMenu::update(){}
 
-Snapshot &DropdownMenu::getSnapshot()
+Snapshot* DropdownMenu::getSnapshot()
 {
-    return this->getSnapshot();
+
+
 }
 
-void DropdownMenu::applySnapshot(const Snapshot &snapshot){}
+void DropdownMenu::applySnapshot(const Snapshot* snapshot){
+}
