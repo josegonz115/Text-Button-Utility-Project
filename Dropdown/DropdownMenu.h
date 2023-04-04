@@ -15,7 +15,9 @@ class DropdownMenu : public GUIComponent
 private:
     InputBox inputBox;
     ItemList itemList;
-
+protected:
+    InputBox& getInputBox(){return inputBox;}
+    ItemList& getItemList(){return itemList;}
 public:
     //Constructor
     DropdownMenu(const sf::Vector2f& position = {10,10}, const sf::Vector2f& size = {100, 30}, const std::string& text = "Dropdown menu");
@@ -24,10 +26,13 @@ public:
     //void addItem(const Item& item);
     void addItem(const std::string& text);
     void setPosition(const sf::Vector2f& position);
+    void setListSize(const sf::Vector2f& size);
 
     //Accessors
     sf::FloatRect getGlobalBounds() const;
     //std::string getText() const;
+    sf::Vector2f getInputBoxPosition() const;
+    sf::Vector2f getInputBoxSize() const;
 
     //Overriden methods
     void draw(sf::RenderTarget &window, sf::RenderStates states) const override;

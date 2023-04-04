@@ -59,6 +59,14 @@ void ItemList::setVisible(bool visible){
         }
 }
 
+void ItemList::setSize(sf::Vector2f size){
+    this->size = size;
+    for(Item& item : *this){
+        item.setSize(size);
+    }
+    updateAlignment();
+}
+
 // Accessors------------------------------------------------------------------------------------------------------------
 sf::Vector2f ItemList::getSize() const{
     float x = size.x;

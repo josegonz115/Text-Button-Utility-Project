@@ -5,6 +5,7 @@
 #ifndef TEXTBOXPROJECT_MOUSEEVENTS_H
 #define TEXTBOXPROJECT_MOUSEEVENTS_H
 #include <SFML/Graphics.hpp>
+#include <list>
 template <class T>
 class MouseEvents {
 
@@ -26,6 +27,9 @@ public:
 
     // returns tru if the mouse is hovered over the object
     static bool hovered(T& object, sf::RenderWindow& window);
+
+    //returns tru if the mouse is hovered over any of the objects
+    static bool hovered(std::list<T>& objects, sf::RenderWindow& window);
 
 
 

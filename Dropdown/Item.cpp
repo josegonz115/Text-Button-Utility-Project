@@ -54,6 +54,21 @@ void Item::setHightlight(bool highlight)
     }
 }
 
+void Item::setSize(const sf::Vector2f &size){
+    box.setSize(size);
+    setPosition(box.getPosition()); //hopefully this works
+}
+
+void Item::setOutlineColor(const sf::Color& color){
+    box.setOutlineColor(color);
+}
+void Item::setFillColor(const sf::Color& color){
+    box.setFillColor(color);
+}
+void Item::setTextColor(const sf::Color& color){
+    text.setFillColor(color);
+}
+
 // Accessors------------------------------------------------------------------------------------------------------------
 sf::FloatRect Item::getGlobalBounds() const
 {
@@ -65,6 +80,15 @@ std::string Item::getText() const
     return text.getString();
 }
 
+sf::Vector2f Item::getSize() const
+{
+    return box.getSize();
+}
+
+sf::Vector2f Item::getPosition() const
+{
+    return box.getPosition();
+}
 
 // Overriden Methods----------------------------------------------------------------------------------------------------
 void Item::draw(sf::RenderTarget &window, sf::RenderStates states) const

@@ -28,6 +28,7 @@ public:
     void add(const std::string& text);
     void setHightlight(bool highlight);
     void setVisible(bool visible);
+    void setSize(sf::Vector2f size);
 
     iterator insert(const_iterator position, const Item& item);
 

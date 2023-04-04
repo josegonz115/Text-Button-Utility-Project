@@ -34,7 +34,7 @@ void Suggestion::organizePosition() {
     //while(!temp.empty()){
     int count = 0;
     // i want the condition to only iterate 5 times if the heapTree is not empty
-    while(count < 5 && !temp.empty()){
+    while(count < 10 && !temp.empty()){
         temp.top().setPosition({initialPos.x, y});
         heapTree.push(temp.top());
         y += temp.top().getGlobalBounds().height;

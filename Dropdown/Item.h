@@ -27,10 +27,17 @@ public:
     //mutators
     void setPosition(const sf::Vector2f &position);
     void setHightlight(bool highlight);
+    void setSize(const sf::Vector2f &size);
+
+    void setOutlineColor(const sf::Color& color);
+    void setFillColor(const sf::Color& color);
+    void setTextColor(const sf::Color& color);
 
     //accessors
     sf::FloatRect getGlobalBounds() const;
     std::string getText() const;
+    sf::Vector2f getSize() const;
+    sf::Vector2f getPosition() const;
 
     //overriden methods
     void draw(sf::RenderTarget &window, sf::RenderStates states) const override;

@@ -20,6 +20,11 @@ void DropdownMenu::setPosition(const sf::Vector2f &position)
     itemList.setPosition({position.x, position.y + inputBox.getGlobalBounds().height});
 }
 
+void DropdownMenu::setListSize(const sf::Vector2f &size)
+{
+    itemList.setSize(size);
+}
+
 //Accessors--------------------------------------------------------------------------------------------------------------
 sf::FloatRect DropdownMenu::getGlobalBounds() const
 {
@@ -28,6 +33,16 @@ sf::FloatRect DropdownMenu::getGlobalBounds() const
     sf::FloatRect bounds(inputBox.getPosition(), size);
 
     return bounds;
+}
+
+sf::Vector2f DropdownMenu::getInputBoxPosition() const
+{
+    return inputBox.getPosition();
+}
+
+sf::Vector2f DropdownMenu::getInputBoxSize() const
+{
+    return inputBox.getSize();
 }
 
 //Overriden methods------------------------------------------------------------------------------------------------------
@@ -53,6 +68,11 @@ void DropdownMenu::addEventHandler(sf::RenderWindow &window, sf::Event event)
                 itemList.setVisible(false);
                 break;
             }
+        }
+        if(!(MouseEvents<InputBox>::hovered(inputBox,window) || MouseEvents<Item>::hovered(itemList,window))){
+            itemList.setHightlight(false);
+            inputBox.disableState(ACTION);
+            itemList.setVisible(false);
         }
     }
 }

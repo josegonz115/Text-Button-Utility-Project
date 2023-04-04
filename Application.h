@@ -14,6 +14,7 @@
 #include "Snapshot/History.h"
 #include "KeyShortcuts/KeyShortcuts.h"
 #include "Dropdown/DropdownMenu.h"
+#include "MenuBar/MenuBar.h"
 
 class Application
 {

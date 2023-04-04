@@ -55,6 +55,19 @@ bool MouseEvents<T>::hovered(T &object, sf::RenderWindow &window)
 }
 
 template<class T>
+bool MouseEvents<T>::hovered(std::list<T> &objects, sf::RenderWindow &window)
+{
+    for (auto &object: objects)
+    {
+        if (hovered(object, window))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+template<class T>
 void MouseEvents<T>::countClicks(sf::Event event)
 {
     // if the mouse is clicked, increment the clicks based on time between clicks

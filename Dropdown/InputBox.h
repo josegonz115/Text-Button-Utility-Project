@@ -16,6 +16,7 @@ public:
     void setInputText(const std::string& text);
     //Accessors
     bool isOpened() const;
+
     //Overriden methods
     //void draw(sf::RenderTarget &window, sf::RenderStates states) const override;
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
