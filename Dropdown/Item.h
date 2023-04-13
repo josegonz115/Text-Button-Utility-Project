@@ -15,10 +15,8 @@ class Item : public GUIComponent
 {
 private:
     sf::RectangleShape box;
-    sf::Text text;
-
 protected:
-    void setText(const std::string &text);
+    sf::Text text;
 
 public:
     Item();
@@ -28,6 +26,7 @@ public:
     void setPosition(const sf::Vector2f &position);
     void setHightlight(bool highlight);
     void setSize(const sf::Vector2f &size);
+    void setText(const std::string &text);
 
     void setOutlineColor(const sf::Color& color);
     void setFillColor(const sf::Color& color);

@@ -11,8 +11,9 @@ void Application::runLoop(){
     // add object - polymorphism
     // ADD ANY OBJECTS HERE
 
-    TextInput textInput(window);
-    addGUIComponent(textInput);
+    // ORIGINAL TEXT INPUT TEST ----------------------------------------------------------------------------------------
+//    TextInput textInput(window);
+//    addGUIComponent(textInput);
 
 
 //    DropdownMenu menu({0,0},{100,40}, "menu"); //parameters -> (position, size, text)
@@ -27,8 +28,8 @@ void Application::runLoop(){
 
 
 
-// Testing the MenuBar class
 
+// Testing the MenuBar class
 //    MenuBar menuBar({0,0},{100,40}, "Menu 1");
 //    menuBar.addMenu("Menu 2");
 //    menuBar.addMenu("Menu 3");
@@ -47,10 +48,46 @@ void Application::runLoop(){
 //    menuBar.addItem("Menu 3", "Item 2");
 //    menuBar.addItem("Menu 3", "Item 3");
 //    menuBar.addItem("Menu 3", "Item 4");
-
 //    addGUIComponent(menuBar);
 
+    // Testing the FileTree class---------------------------------------------------------------------------------------
+//    FileItem fileItem1(Image::_FOLDER, "Folder 1", {100, 20}, {10,10});
+//    //fileItem1.setFillColor(sf::Color::Red);
+//    addGUIComponent(fileItem1);
 
+    //Image icon, std::string text, sf::Vector2f size, sf::Vector2f position
+//    FileNode folder1(Image::_FOLDER, "folder 1");
+//    FileItem file1(Image::_FILE, "file 1");
+//    FileItem folder2(Image::_FOLDER, "folder 2");
+//    FileItem file2(Image::_FILE, "file 2");
+//    folder1.addChild(file1);
+//    folder1.addChild(folder2);
+//    folder1.addChild(file2);
+//
+//    FileItem file3(_FILE, "file 3");
+//
+//    std::map<std::string, FileNode*> children = folder1.getChildren();
+//    children["folder 2"]->addChild(file3);
+//    addGUIComponent(folder1);
+    //HEY LOOK HERE NOW IT IS TIME TO TEST THE FILETREEEEE
+    FileTree fileTree;
+    fileTree.push("FILES");
+    fileTree.push("FILES", "folder 1", _FOLDER);
+    fileTree.push("FILES", "recipes.txt");
+    fileTree.push("folder 1", "numbers.txt");
+
+    addGUIComponent(fileTree);
+
+
+
+//    FileTree fileTree;
+//    addGUIComponent(fileTree);
+//    fileTree.push("Directory 1", "File 1");
+//    fileTree.push("Directory 1", "File 2");
+//    fileTree.push("Directory 1", "File 3");
+//    fileTree.push("Directory 1", "File 4");
+
+//    FileNode node1(_FOLDER, "folder 1", {100, 20}, {0,0}); //Image icon, std::string text, sf::Vector2f size, sf::Vector2f position
 
     while(window.isOpen()){
         eventListener();

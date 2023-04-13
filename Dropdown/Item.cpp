@@ -3,6 +3,7 @@
 //
 
 #include "Item.h"
+#include <iostream>
 // Constructors---------------------------------------------------------------------------------------------------------
 Item::Item(){ } //never used but needed for inheritance
 
@@ -103,6 +104,7 @@ void Item::draw(sf::RenderTarget &window, sf::RenderStates states) const
 void Item::addEventHandler(sf::RenderWindow &window, sf::Event event)
 {
     if(MouseEvents<Item>::hovered(*this, window)){
+        std::cout << "Event handler for item\n";
         setHightlight(true);
     }
     else{

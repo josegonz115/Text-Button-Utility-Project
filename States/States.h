@@ -12,7 +12,8 @@ enum ObjectState{
     HIGHLIGHTED,
     DISABLED,
 
-    LAST_STATE
+    LAST_STATE,
+    CHILDREN_VISIBLE,
 };
 
 class States

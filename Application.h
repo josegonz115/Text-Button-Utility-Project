@@ -15,6 +15,13 @@
 #include "KeyShortcuts/KeyShortcuts.h"
 #include "Dropdown/DropdownMenu.h"
 #include "MenuBar/MenuBar.h"
+#include "FileTree/FileTree.h"
+
+
+#include "FileTree/FileNode.h"
+
+
+
 
 class Application
 {
