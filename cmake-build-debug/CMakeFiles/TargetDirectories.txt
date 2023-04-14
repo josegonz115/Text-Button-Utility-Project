@@ -1,3 +1,0 @@
-C:/Users/joseg/OneDrive/Documents/PCC/CS-8/cs8week9/textboxProject/cmake-build-debug/CMakeFiles/textboxProject.dir
-C:/Users/joseg/OneDrive/Documents/PCC/CS-8/cs8week9/textboxProject/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/joseg/OneDrive/Documents/PCC/CS-8/cs8week9/textboxProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
