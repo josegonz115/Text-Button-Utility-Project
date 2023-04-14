@@ -1,8 +1,0 @@
-file reader class has a vector of words from the file
-word class is just a word , responsible for drawing a word
-
-just make word class a child of sf::text
-    give it a variable for priority,
-        make getters and setters
-    make comparison operators
-        just one line of code
