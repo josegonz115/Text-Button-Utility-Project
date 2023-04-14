@@ -11,11 +11,11 @@ void Application::runLoop(){
     // add object - polymorphism
     // ADD ANY OBJECTS HERE
 
-    // ORIGINAL TEXT INPUT TEST ----------------------------------------------------------------------------------------
+    //  TEXT INPUT TEST ----------------------------------------------------------------------------------------
 //    TextInput textInput(window);
 //    addGUIComponent(textInput);
 
-
+    //  DROPDOWN MENU TEST -------------------------------------------------------------------------------------
 //    DropdownMenu menu({0,0},{100,40}, "menu"); //parameters -> (position, size, text)
 //    //DropdownMenu menu({100,100},{200,60}, "menu"); //parameters -> (position, size, text)
 //    menu.addItem("ice cream");
@@ -29,7 +29,7 @@ void Application::runLoop(){
 
 
 
-// Testing the MenuBar class
+    // MENUBAR TEST -----------------------------------------------------------------------------------------------------
 //    MenuBar menuBar({0,0},{100,40}, "Menu 1");
 //    menuBar.addMenu("Menu 2");
 //    menuBar.addMenu("Menu 3");
@@ -50,7 +50,7 @@ void Application::runLoop(){
 //    menuBar.addItem("Menu 3", "Item 4");
 //    addGUIComponent(menuBar);
 
-    // Testing the FileTree class---------------------------------------------------------------------------------------
+    // FILETREE TEST---------------------------------------------------------------------------------------
 //    FileItem fileItem1(Image::_FOLDER, "Folder 1", {100, 20}, {10,10});
 //    //fileItem1.setFillColor(sf::Color::Red);
 //    addGUIComponent(fileItem1);
@@ -70,24 +70,15 @@ void Application::runLoop(){
 //    children["folder 2"]->addChild(file3);
 //    addGUIComponent(folder1);
     //HEY LOOK HERE NOW IT IS TIME TO TEST THE FILETREEEEE
-    FileTree fileTree;
-    fileTree.push("FILES");
-    fileTree.push("FILES", "folder 1", _FOLDER);
-    fileTree.push("FILES", "recipes.txt");
-    fileTree.push("folder 1", "numbers.txt");
-
-    addGUIComponent(fileTree);
-
-
-
 //    FileTree fileTree;
+//    fileTree.push("FILES");
+//    fileTree.push("FILES", "folder 1", _FOLDER);
+//    fileTree.push("FILES", "recipes.txt");
+//    fileTree.push("folder 1", "numbers.txt");
+//
 //    addGUIComponent(fileTree);
-//    fileTree.push("Directory 1", "File 1");
-//    fileTree.push("Directory 1", "File 2");
-//    fileTree.push("Directory 1", "File 3");
-//    fileTree.push("Directory 1", "File 4");
+    // END OF FILE TREE TEST -------------------------------------------------------------------------------------
 
-//    FileNode node1(_FOLDER, "folder 1", {100, 20}, {0,0}); //Image icon, std::string text, sf::Vector2f size, sf::Vector2f position
 
     while(window.isOpen()){
         eventListener();

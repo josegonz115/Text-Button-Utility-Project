@@ -12,27 +12,37 @@ void FileNode::toggleChlidren()
 
 void FileNode::reposition(int depth) const
 {
+    sf::Vector2f pos = data.getPosition();
+    pos.x += 25;
+    pos.y = data.getGlobalBounds().height + data.getGlobalBounds().top;
 
-    float left = data.getPosition().x * depth + 50 ;
-    float top = data.getPosition().y;
-//    if(depth > 0){
-//        top += data.getSize().y * depth;
-//    }
-    //int i = 1;
-    for (auto &child : children)
+    auto iter = children.begin();
+    for(auto &child : children)
     {
+        child.second->getData().setPosition(pos);
+        pos.y += child.second->getData().getGlobalBounds().height;
 
-        float height = child.second->getData().getSize().y;
-        top += height;
-        child.second->getData().setPosition({left, top});
-        if(child.second->getData().getImage() == Image::_FOLDER){
-            child.second->reposition(depth + 1);
-        }
-     //   i++;
     }
 
 
 
+//    float left = data.getPosition().x * depth + 50 ;
+//    float top = data.getPosition().y;
+////    if(depth > 0){
+////        top += data.getSize().y * depth;
+////    }
+//    //int i = 1;
+//    for (auto &child : children)
+//    {
+//
+//        float height = child.second->getData().getSize().y;
+//        top += height;
+//        child.second->getData().setPosition({left, top});
+//        if(child.second->getData().getImage() == Image::_FOLDER){
+//            child.second->reposition(depth + 1);
+//        }
+//     //   i++;
+//    }
 }
 
 // Constructors --------------------------------------------------------------------------------------------------------
@@ -79,9 +89,7 @@ void FileNode::addChild(const FileItem& _data){
     FileItem copy = _data;
     children[_data.getText()] = new FileNode(
             copy.getImage(), copy.getText(), copy.getSize(), copy.getPosition());
-//    children.insert(std::pair<std::string, FileNode*>(
-//            _data.getText(), new FileNode()));
-//    children[_data.getText()]->setData(_data);
+
 children[_data.getText()]->disableState(VISIBLE);
 }
 
@@ -101,6 +109,7 @@ FileNode::iterator FileNode::end()
 
 void FileNode::draw(sf::RenderTarget &window, sf::RenderStates states) const
 {
+    reposition();
     if(checkState(VISIBLE)){
         window.draw(data);
     }
@@ -155,5 +164,13 @@ void FileNode::update(){
 
 }
 Snapshot *FileNode::getSnapshot(){}
-sf::FloatRect FileNode::getGlobalBounds(){}
+sf::FloatRect FileNode::getGlobalBounds(){
+    sf::FloatRect b = data.getGlobalBounds();
+    b.width = b.width + 25;
+    if(checkState(CHILDREN_VISIBLE)){
+        for (auto &child : children){
+            b.height += child.second->getGlobalBounds().height;
+        }
+    }
+}
 
